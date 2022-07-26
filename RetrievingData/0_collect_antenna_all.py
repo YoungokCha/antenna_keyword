@@ -12,7 +12,7 @@ import pybliometrics
 from pybliometrics.scopus.utils import config
 
 
-config['Authentication']['InstToken'] = '5d5f28a8a7173577df3e75703e75e8a8'
+config['Authentication']['InstToken'] = ''
 print(config['Authentication']['InstToken'])
 
 query = 'TITLE-ABS-KEY(antenna)'
