@@ -28,11 +28,11 @@ rcParams['axes.linewidth'] = 2
 rcParams['xtick.major.size'] = 6
 rcParams['xtick.major.width'] = 1.5
 rcParams['xtick.minor.size'] = 4
-rcParams['xtick.labelsize'] = 14
+rcParams['xtick.labelsize'] = 10
 rcParams['ytick.major.size'] = 6
 rcParams['ytick.major.width'] = 1.5
 rcParams['ytick.minor.size'] = 4
-rcParams['ytick.labelsize'] = 14
+rcParams['ytick.labelsize'] = 10
 
 df = pd.read_excel('word2vec.xlsx', sheet_name='word_vec_2415', index_col=0)
 multi_word_vec = df['multi_word_vector']
@@ -72,15 +72,15 @@ model.fit(twodim)
 y_kmeans = model.fit_predict(twodim)
 labels = model.labels_
 
-plt.figure(figsize =(10,10))
+plt.figure(figsize =(5,5))
 sns.set_style("ticks")
 
 #colormap = np.array(['red', 'orange','aqua', 'purple', 'green', 'magenta', 'blue'])
 colormap = np.array(['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'])
-plt.scatter(twodim[:,0], twodim[:,1], c=colormap[model.labels_], s=40)
+plt.scatter(twodim[:,0], twodim[:,1], c=colormap[model.labels_], s=10)
 
-plt.xlabel('PC 1', size =15)
-plt.ylabel('PC 2', size =15)
+plt.xlabel('PC 1', size =10)
+plt.ylabel('PC 2', size =10)
 
 
 

@@ -67,7 +67,7 @@ class attention(Layer):
 
 
 df = pd.read_excel('keyword_frequency_half_year_weight.xlsx', sheet_name='freq', header =0) 
-raw_seq = df['energy transfer'].values
+raw_seq = df['MIMO antenna'].values
 
 # ##attention model
 seq_data = raw_seq
@@ -170,7 +170,7 @@ plt.rcParams['axes.titlesize']= 20
 plt.rcParams['axes.labelsize']= 14
 
 #sns.set_style("ticks")
-plt.title("'energy transfer'")
+plt.title("'MIMO antenna'")
 plt.xlabel("Published Year")
 plt.ylabel("Frequency Scale")
 plt.plot(range(len(lstm_past)), lstm_past,'-', color ='black',label = 'Past Data')

@@ -28,7 +28,7 @@ tf.random.set_seed(seed)
 split_percent = 0.90
 look_back = 3
 num_epochs =150
-TITLE = 'energy transfer'
+TITLE = 'MIMO antenna'
 
 earlystopping = callbacks.EarlyStopping(monitor ="val_loss", 
                                         mode ="min", patience = 5, 
