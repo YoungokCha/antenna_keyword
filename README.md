@@ -14,8 +14,8 @@ import pybliometrics
 from pybliometrics.scopus import ScopusSearch
 from pybliometrics.scopus.utils import config
 
-config['Authentication']['InstToken'] = ''
-print(config['Authentication']['InstToken']) # need an institution token
+config['Authentication']['InstToken'] = ''    # need an institution token
+print(config['Authentication']['InstToken']) 
 query = 'TITLE-ABS-KEY(antenna)'
 s = ScopusSearch(query, download=True, verbose=True)  
 ```
