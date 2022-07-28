@@ -1,4 +1,4 @@
-# AntennaKeywordPrediction
+# Antenna Keyword Prediction
 ## Installation
 
 The main project requires `python3.7` and install the dependency package: 
@@ -68,4 +68,27 @@ plt.xlabel('PC 1', size =10)
 plt.ylabel('PC 2', size =10)
 ```
 ![image](https://user-images.githubusercontent.com/48100788/181480621-827c33f4-298f-4db5-88c5-a9873bc5a0c7.png)
+
+
+## 3. Analysing trend
+
+We need to build a data set that tracks a frequency over time (i.e., time series) for each keyword. We first count the occurrences of each keyword per year over the duration from 1981 to 2021.
+```python
+import pandas
+import seaborn as sns
+import matplotlib.pyplot as plt
+from pandas.plotting import scatter_matrix
+
+df = pandas.read_excel('keyword_frequency_weight_year.xlsx', sheet_name = 'heatmap_em', index_col= 0)
+fig = plt.figure(figsize=(20,25))
+sns.set(font_scale=3)
+sns.heatmap(df,  cmap="YlOrRd")
+plt.show()
+```
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/48100788/181482269-0add5113-b29e-4959-be50-26f0c0735a30.png"><img width="385" alt="image" src="https://user-images.githubusercontent.com/48100788/181482379-f1f6a4e4-1611-439a-9b61-db73aa6eef92.png"><img width="400" alt="image" src="https://user-images.githubusercontent.com/48100788/181482437-954128ab-0d61-49b5-b4d6-5ccd6649ead2.png">
+
+
+
+
+
 
