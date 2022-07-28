@@ -7,6 +7,8 @@ The main project requires `python3.7` and install the dependency package:
   
 ## 1. Retrieving Data
 
+This program utilises a Python package named, pybliometrics, to access their data via the Scopus’ RESTful API using HTTP requests.  Following codes enable to obtain over 159K antenna related abstracts and relevant data (e.g., title, publication name, author’s keywords, number of citation and affiliation name).
+
 ```python
 import pybliometrics
 from pybliometrics.scopus import ScopusSearch
@@ -17,7 +19,6 @@ print(config['Authentication']['InstToken']) # need an institution token
 query = 'TITLE-ABS-KEY(antenna)'
 s = ScopusSearch(query, download=True, verbose=True)  
 ```
-This program utilises a Python package named, pybliometrics, to access their data via the Scopus’ RESTful API using HTTP requests.  We collected over 159K antenna related abstracts and relevant data (e.g., title, publication name, author’s keywords, number of citation and affiliation name).
 
 Using the well-referenced Rapid Automatic Keyword Extraction (RAKE) algorithm, we can find many meaningful keyword phrases of each paper, however, all these phrases cannot be used for our prediction task due to its significant amount and complexity. 
 ```python
@@ -40,7 +41,7 @@ if(len(set(word).intersection(set(title_split)))>1):
 ```
 ## 2. Embedding keywords
 
-Using a pre-trained word embedding model, Mat2Vec, which is built from an unsupervised word embedding using 3.3 million scientific abstracts,
+This is the code for using a pre-trained word embedding model.
 
 ```python
 model = Word2Vec.load("models/pretrained_embeddings")
@@ -72,7 +73,16 @@ plt.ylabel('PC 2', size =10)
 
 ## 3. Analysing trend
 
-We need to build a data set that tracks a frequency over time (i.e., time series) for each keyword. We first count the occurrences of each keyword per year over the duration from 1981 to 2021.
+We need to build a data set that tracks a frequency over time (i.e., time series) for each keyword. We count the occurrences of each keyword per year over the duration from 1981 to 2021. This data set also is applied by a weight which is considered a number of citaion, journal name and publication year.
+
+```python
+for keyword in keywords:
+      re.findall(keyword,clean_abstract)
+      result.append(len(re.findall(keyword,clean_abstract))*w)   # w = weight
+```                
+
+Following code can plot the heatmap graph for top 30 increasing, decreasing and emerging keywords based on their frequency counts.
+
 ```python
 import pandas
 import seaborn as sns
@@ -86,6 +96,7 @@ sns.heatmap(df,  cmap="YlOrRd")
 plt.show()
 ```
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/48100788/181482269-0add5113-b29e-4959-be50-26f0c0735a30.png"><img width="385" alt="image" src="https://user-images.githubusercontent.com/48100788/181482379-f1f6a4e4-1611-439a-9b61-db73aa6eef92.png"><img width="400" alt="image" src="https://user-images.githubusercontent.com/48100788/181482437-954128ab-0d61-49b5-b4d6-5ccd6649ead2.png">
+
 
 
 
