@@ -7,7 +7,7 @@ The main project requires `python3.7` and install the dependency package:
   
 ## 1. Retrieving Data
 
-This program utilises a Python package named, pybliometrics, to access their data via the Scopus’ RESTful API using HTTP requests.  Following codes enable to obtain over 159K antenna related abstracts and relevant data (e.g., title, publication name, author’s keywords, number of citation and affiliation name).
+This program utilises a Python package named, pybliometrics, to access their data via the Scopus’ RESTful API using HTTP requests. Following codes enable to obtain over 159K antenna related abstracts and relevant data (e.g., title, publication name, author’s keywords, number of citation and affiliation name).
 
 ```python
 import pybliometrics
@@ -46,7 +46,7 @@ This is the code for using a pre-trained word embedding model.
 ```python
 model = Word2Vec.load("models/pretrained_embeddings")
 ```
-`find_vector_value()` can the selected keywords are vectorised onto the hyper-dimensional space to analyse their relationship.
+`find_vector_value()` makes the selected keywords vectorise onto the hyper-dimensional space to analyse their relationship.
 
 For clustering analysis, we plot all 200-dimensional 2,415 keywords into 2D using Principal Component Analysis (PCA). As a result, all the keywords are now clustered into 7 groups (or categories) using k-means algorithm. 
 
@@ -55,7 +55,7 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
 twodim = PCA().fit_transform(word_vec)[:,:2]  #2D PCA
-model = KMeans(n_clusters =7, random_state=42)  #k = 7
+model = KMeans(n_clusters =7, random_state=42)  #k = 7 from elbow method
 model.fit(twodim)
 y_kmeans = model.fit_predict(twodim)
 labels = model.labels_
@@ -142,7 +142,7 @@ model_att.fit(train_generator, epochs=num_epochs, verbose=1, shuffle=False)
 prediction = model_att.predict(test_generator)
 
 ```
-Following plot is illustrated the prediction results for next 4 years (from year of 2022 to 2026) both with attention layer and withuout attention layer.
+Following plot illustrates the prediction results for next 4 years (from year of 2022 to 2026) both with attention layer and withuout attention layer.
 
 ![image](https://user-images.githubusercontent.com/48100788/181509462-1f35f180-2df0-47da-8158-066e712a35f4.png)
 
